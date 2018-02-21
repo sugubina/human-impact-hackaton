@@ -5,16 +5,14 @@ import axios from 'axios';
 dotenv.config();
 
 export default (ctx) => {
-  const {response} = new Syncano(ctx)
+  const {response, users} = new Syncano(ctx)
   // const CLIENT_ID=process.env.CLIENT_ID;
   // const CLIENT_SECRET = process.env.CLIENT_SECRET;
-  const CLIENT_ID=''
-  const CLIENT_SECRET = ''
+  const CLIENT_ID='666f7072bbaba9fc4e75'
+  const CLIENT_SECRET = ctx.config.GITHUB_CLIENT_SECRET
   if (ctx.args.code) {
 
     let access_token;
-    console.log(ctx.args.code);
-    console.log(CLIENT_ID);
     console.log(CLIENT_SECRET);
     const result = axios.post('https://github.com/login/oauth/access_token',
                             {client_id: CLIENT_ID,
@@ -24,7 +22,7 @@ export default (ctx) => {
                               access_token = rez;
                               console.log(rez);
                               response.json({
-                                message: `Hello ${ctx.args.code}! Here is your token: ${access_token}`
+                                message: `Hello ${ctx.args.code}! Here is your token:` + access_token
                               })
                              });
   

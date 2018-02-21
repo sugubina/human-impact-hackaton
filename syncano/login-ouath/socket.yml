@@ -6,7 +6,12 @@ keywords:
   - hello
   - world
 
-  
+config:
+  GITHUB_CLIENT_SECRET:
+    description: Facebook App Page Token
+    long_description: To find client secret go to https://github.com ->settings -> developer settings -> app and find secret key
+    required: true
+
 
 endpoints:
   login:
