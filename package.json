@@ -1,0 +1,23 @@
+{
+  "name": "human-impact-hackaton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@syncano/cli": "^0.10.0-alpha.f21aa8b8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugubina/human-impact-hackaton.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sugubina/human-impact-hackaton/issues"
+  },
+  "homepage": "https://github.com/sugubina/human-impact-hackaton#readme"
+}
