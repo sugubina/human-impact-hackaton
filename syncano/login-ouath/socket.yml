@@ -1,0 +1,39 @@
+name: login-ouath
+description: Description of login-ouath. Login with github.
+version: 0.0.1
+runtime: nodejs_v8
+keywords:
+  - hello
+  - world
+
+  
+
+endpoints:
+  login:
+    description: Login with github!
+    parameters:
+      code:
+        type: string
+        description: temporary string to authorize from github
+        example: 89c8fb362911fd6994c9
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Confirmation of authorization
+        example: |
+          {
+            "message": "You have been authorized"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send code argument!"
+          }

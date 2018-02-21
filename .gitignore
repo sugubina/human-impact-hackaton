@@ -27,3 +27,12 @@ syncano/.build
 syncano/.dist
 syncano/.bundles
 syncano/**/scripts/.bundles
+
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
