@@ -19,8 +19,9 @@ export default (ctx) => {
                              client_secret: CLIENT_SECRET,
                              code: ctx.args.code})
                              .then( (rez) => {
-                              access_token = rez;
-                              console.log(rez);
+                              //  console.log(JSON.parse(rez.data)['access_token'])
+                              access_token = rez.data;
+                              console.log(rez.data);
                               response.json({
                                 message: `Hello ${ctx.args.code}! Here is your token:` + access_token
                               })
