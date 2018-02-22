@@ -12,6 +12,17 @@ config:
     long_description: To find client secret go to https://github.com ->settings -> developer settings -> app and find secret key
     required: true
 
+classes:
+  participants:
+    - name: gitId
+      type: string
+    - name: gitUrl
+      type: string
+    - name: avatarUrl
+      type: string
+    - name: accessToken
+      type: string
+
 
 endpoints:
   login:
