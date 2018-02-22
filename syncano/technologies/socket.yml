@@ -1,0 +1,61 @@
+name: technologies
+description: Description of technologies
+version: 0.0.1
+runtime: nodejs_v8
+
+endpoints:
+  add:
+    description: Define new technolgy!
+    parameters:
+      name:
+        type: string
+        description: Name of the technology
+        example: Syncano
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Success message
+        example: |
+          {
+            "message": "Technology created!"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send "name" argument!"
+          }
+  list:
+    response:
+      success:
+        description: Success
+        parameters:
+          technologies:
+            description: Technologies list
+        example: |
+          {
+            "technologies": ["Syncano"]
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "Bad request!"
+          }
+
+classes:
+  technology:
+    - name: technology_name
+      type: string
