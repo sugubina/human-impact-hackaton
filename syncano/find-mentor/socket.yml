@@ -91,5 +91,5 @@ endpoints:
 
         example: |
           {
-            "message": "You have to send "technology", "substantiation", "mentorId" and "participantId" arguments!"
+            "message": "You have to send "reqId" and "status" arguments!"
           }

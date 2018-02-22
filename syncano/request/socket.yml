@@ -22,6 +22,15 @@ classes:
       type: integer
     - name: status
       type: string
+  answers:
+    - name: requestId
+      type: integer
+    - name: commentatorId
+      type: integer
+    - name: answer
+      type: string
+    - name: helpUrl
+      type: string
 
 
 endpoints:
@@ -107,4 +116,46 @@ endpoints:
           {
             "message": "You have to send "issueId" and "status" arguments!"
           }
+
+  answer:
+    description: new answer for request!
+    parameters:
+      requestId:
+        type: int
+        description: request Id to reffer.
+        example: 10
+      commentatorId:
+        type: int
+        description: commentator Id(whether student or mentor)
+        example: 23452344
+      answer:
+        type: string
+        description: answer in issue topic
+        example: hi i found bug in line 3
+      helpUrl:
+        type: string
+        description: code sample with fix/example
+        example: https://pastebin.com/EYwjFjmS
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Confirmation message
+        example: |
+          {
+            "message": "Answer by 12413423 added to topic 12."
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send "requestId", "commentqatorId" and "helpUrl" or "answer arguments!"
+          }
+
 
