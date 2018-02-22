@@ -1,0 +1,116 @@
+// animations
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes text_underline {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes hover {
+  0% {
+    background: $white;
+  }
+  25% {
+    background: $white;
+  }
+  30% {
+    background: $porcelain;
+  }
+  100% {
+    background: $porcelain;
+  }
+}
+
+@keyframes hover-fade-in {
+  0% {
+    opacity: 0.1;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+// mixins
+@mixin pseudo($width, $height) {
+  content: '';
+  position: absolute;
+  display: block;
+  width: $width;
+  height: $height;
+}
+
+@mixin underline {
+  position: relative;
+  &:before {
+    @include pseudo(100%, 1px);
+    bottom: 3px;
+    left: 0;
+    background: currentColor;
+    transform-origin: 0;
+    transform: scale(0);
+  }
+  &:hover {
+    &:before {
+      animation: text_underline 0.5s ease-in-out forwards;
+    }
+  }
+}
+
+@mixin font_big($spacing) {
+  font-size: 38px;
+  line-height: 48px;
+  letter-spacing: $spacing;
+  font-weight: $bold;
+}
+
+@mixin button($background, $color, $height, $width) {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: $height;
+  width: $width;
+  background: $background;
+  color: $color;
+  font-weight: $medium;
+  border: 1px solid $color;
+  border-radius: 10px;
+  cursor: pointer;
+}

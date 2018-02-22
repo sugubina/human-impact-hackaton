@@ -1,0 +1,20 @@
+{
+  "name": "twentyfirst-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.3.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-headerfooter": "^1.0.3",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2",
+    "jquery": "^3.2.1"
+  }
+}

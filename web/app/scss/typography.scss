@@ -1,0 +1,18 @@
+
+$font_default: 'Zilla Slab', sans-serif;
+
+$font_size_default: 22px;
+$font_size_small: 20px;
+
+$bold: 700;
+$semibold: 600;
+$medium: 500;
+$regular: 400;
+
+h1, h2 {
+  @include font_big(-0.03em);
+
+  @media (max-width: $desktop) {
+    font-size: 30px;
+  }
+}
