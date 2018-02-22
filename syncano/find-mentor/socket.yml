@@ -1,0 +1,95 @@
+name: find-mentor
+description: Description of find-mentor
+version: 0.0.1
+runtime: nodejs_v8
+keywords:
+  - find
+  - mentor
+
+classes:
+  mentoring:
+    - name: participantId
+      type: integer
+    - name: mentorId
+      type: integer
+    - name: technology
+      type: string
+    - name: status
+      type: string
+    - name: substantiation
+      type: string
+
+endpoints:
+  find-mentor:
+    description: Endpoint for sending requests for mentors!
+    parameters:
+      participantId:
+        type: int
+        description: id of student that submits request for mentor
+        example: 26896617
+      mentorId:
+        type: int
+        description: id of mentor that request is submitted to
+        example: 18159302
+      technology:
+        type: string
+        description: technology student want to be mentored in
+        example: C#
+      substantiation:
+        type: string
+        description: substantiation why he should accept you as his protege
+        example: I am the best you should definitely teach me
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Confirmation message
+        example: |
+          {
+            "message": "Your request to mentor: 2336435 has been submitted"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send "technology", "substantiation", "mentorId" and "participantId" arguments!"
+          }
+
+  update:
+    description: updating state of mentors request!
+    parameters:
+      reqId:
+        type: int
+        description: id of request-for-mentor
+        example: 14
+      status:
+        type: int
+        description: new status of request-for-mentor
+        example: rejected
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Confirmation message
+        example: |
+          {
+            "message": "Your request-for-mentor is updated"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send "technology", "substantiation", "mentorId" and "participantId" arguments!"
+          }

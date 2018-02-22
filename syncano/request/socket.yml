@@ -3,8 +3,8 @@ description: Description of request
 version: 0.0.1
 runtime: nodejs_v8
 keywords:
-  - hello
-  - world
+  - request
+  - question
 
 classes:
   requests:
@@ -16,7 +16,7 @@ classes:
       type: string
     - name: urlCode
       type: string
-    - name: userId
+    - name: participantId
       type: integer
     - name: mentorId
       type: integer
@@ -44,7 +44,7 @@ endpoints:
         type: string
         description: Link to pull request or code
         example: https://pastebin.com/EYwjFjmS
-      userId:
+      participantId:
         type: int
         description: id of student that submits issue
         example: 26896617
@@ -71,7 +71,7 @@ endpoints:
 
         example: |
           {
-            "message": "You have to send "technology", "technology", "description", "urlCode" and "userId" arguments!"
+            "message": "You have to send "technology", "requestType", "description", "urlCode" and "participantId" arguments!"
           }
 
 
