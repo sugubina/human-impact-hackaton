@@ -16,6 +16,7 @@ classes:
   participants:
     - name: gitId
       type: string
+      filter_index: true
     - name: gitUrl
       type: string
     - name: avatarUrl

@@ -8,6 +8,25 @@ export default ctx => {
   const { response, users, data } = new Syncano(ctx);
   const CLIENT_ID = "666f7072bbaba9fc4e75";
   const CLIENT_SECRET = ctx.config.GITHUB_CLIENT_SECRET;
+
+
+  async function addUser(user,users,data,response,access_token) {
+    try
+    {
+      console.log('test')
+      // let usersResponse = await data.participants.where('gitId', user.id).list();
+      await data.participants.updateOrCreate({ gitId: user.id}, {accessToken: access_token, gitUrl: user.url, avatarUrl: user.avatar_url })
+      response.json({
+        access_token: access_token,
+        message:
+          `Hello ${ctx.args.code}! id: ${user.id}. Here is your token:` + access_token
+      });
+  
+    }
+    catch(err){
+      console.log(err)}
+  }
+
   if (ctx.args.code) {
     const result = axios
       .post("https://github.com/login/oauth/access_token", {
@@ -20,6 +39,7 @@ export default ctx => {
         var str = rez.data;
         var matches = str.match(/access_token=([^&]*)/);
         const access_token = matches[1];
+        
         axios
           .get("https://api.github.com/user", {
             params: { access_token: access_token }
@@ -34,15 +54,16 @@ export default ctx => {
             // users.where({username: user.id}).list().then(() =>{
             //   console.log('test'); 
             // });
-              data.participants.updateOrCreate(
-                { gitId: user.id},{accessToken: access_token, gitUrl: user.url, avatarUrl: user.avatar_url }
-              )
-              .then(() => {
-                response.json({
-                  message:
-                    `Hello ${ctx.args.code}! id: ${user.id}. Here is your token:` + access_token
-                });
-              });
+            addUser(user,users,data,response,access_token);
+              // data.participants.updateOrCreate(
+              //   { gitId: user.id},{accessToken: access_token, gitUrl: user.url, avatarUrl: user.avatar_url }
+              // )
+              // .then(() => {
+              //   response.json({
+              //     message:
+              //       `Hello ${ctx.args.code}! id: ${user.id}. Here is your token:` + access_token
+              //   });
+              // });
           });
       });
   } else {
@@ -54,3 +75,4 @@ export default ctx => {
     );
   }
 };
+
