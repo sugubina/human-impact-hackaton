@@ -32,10 +32,10 @@ export default ctx => {
             console.log('user operation');
 
             // users.where({username: user.id}).list().then(() =>{
-            //   console.log('test');
+            //   console.log('test'); 
             // });
-              data.participants.create(
-                { gitId: user.id ,accessToken: access_token, gitUrl: user.url, avatarUrl: user.avatar_url }
+              data.participants.updateOrCreate(
+                { gitId: user.id},{accessToken: access_token, gitUrl: user.url, avatarUrl: user.avatar_url }
               )
               .then(() => {
                 response.json({
