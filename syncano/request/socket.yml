@@ -1,0 +1,110 @@
+name: request
+description: Description of request
+version: 0.0.1
+runtime: nodejs_v8
+keywords:
+  - hello
+  - world
+
+classes:
+  requests:
+    - name: technology
+      type: string
+    - name: requestType
+      type: string
+    - name: description
+      type: string
+    - name: urlCode
+      type: string
+    - name: userId
+      type: integer
+    - name: mentorId
+      type: integer
+    - name: status
+      type: string
+
+
+endpoints:
+  add:
+    description: add request!
+    parameters:
+      technology:
+        type: string
+        description: technology where problem is encountered
+        example: C#
+      requestType:
+        type: string
+        description: type of request
+        example: code review
+      description:
+        type: string
+        description: Description of a problem
+        example: I have error in line 5 - null reference exception
+      urlCode:
+        type: string
+        description: Link to pull request or code
+        example: https://pastebin.com/EYwjFjmS
+      userId:
+        type: int
+        description: id of student that submits issue
+        example: 26896617
+      mentorId:
+        type: int
+        description: id of mentor that issue is directed to
+        example: 26896617
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Confirmation message
+        example: |
+          {
+            "message": "Issue with id: 1 added"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send "technology", "technology", "description", "urlCode" and "userId" arguments!"
+          }
+
+
+  update:
+    description: update request status!
+    parameters:
+      issueId:
+        type: int
+        description: issue id that status we want to update
+        example: 10
+      status:
+        type: string
+        description: new status
+        example: pending
+    response:
+      success:
+        description: Success
+        parameters:
+          message:
+            description: Confirmation message
+        example: |
+          {
+            "message": "Issue with id: 10 updated with status: pending"
+          }
+      fail:
+        exit_code: 400
+        description: Failed
+        parameters:
+          message:
+            description: Error message
+
+        example: |
+          {
+            "message": "You have to send "issueId" and "status" arguments!"
+          }
+
