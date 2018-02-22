@@ -18,6 +18,7 @@ export default ctx => {
       await data.participants.updateOrCreate({ gitId: user.id}, {accessToken: access_token, gitUrl: user.url, avatarUrl: user.avatar_url })
       response.json({
         access_token: access_token,
+        userId: user.id,
         message:
           `Hello ${ctx.args.code}! id: ${user.id}. Here is your token:` + access_token
       });
